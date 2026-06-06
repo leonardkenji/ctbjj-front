@@ -9,7 +9,7 @@ import { Schedule } from "./sections/Schedule"
 function App () {
   return (
 
-    <div>
+    <div className="pt-[64px]">
       <Navbar/>
         <Hero/>
         <Programs />
