@@ -28,15 +28,21 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
+    margin: 0;
   }
 
-  h1, h2, h3 {
+  h1,
+  h2,
+  h3 {
     font-family: var(--font-sans);
+  }
+
+  #root {
+    min-height: 100vh;
   }
 }
 
 @layer utilities {
-  /* Scroll reveal — initial hidden state */
   .reveal {
     opacity: 0;
     transform: translateY(32px);
@@ -55,7 +61,6 @@
     transition: opacity 0.7s ease-out, transform 0.7s ease-out;
   }
 
-  /* Fired by IntersectionObserver */
   .reveal.revealed,
   .reveal-left.revealed,
   .reveal-right.revealed {
@@ -69,7 +74,6 @@
   .reveal-delay-400 { transition-delay: 400ms; }
   .reveal-delay-500 { transition-delay: 500ms; }
   .reveal-delay-600 { transition-delay: 600ms; }
-
 
   @keyframes fade-in {
     from {

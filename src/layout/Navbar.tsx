@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "../components/Button";
 
 const navLinks = [
@@ -14,9 +15,9 @@ export const Navbar = () => {
     <header className="fixed top-0 left-0 w-full z-50 border-b border-foreground/8">
       <div className="backdrop-blur-md bg-background/85">
         <nav className="container mx-auto px-6 py-4 flex items-center justify-between">
-          <a href="/" className="flex text-base md:text-xl font-black tracking-tighter">
+          <Link to="/" className="flex text-base md:text-xl font-black tracking-tighter">
             CT Brazilian Jiu Jitsu
-          </a>
+          </Link>
 
           {/* Desktop nav */}
           <div className="hidden md:flex items-center">
@@ -32,8 +33,12 @@ export const Navbar = () => {
           </div>
 
           <div className="hidden md:flex gap-4">
-            <Button size="sm">Quero Treinar!</Button>
-            <Button className="bg-secondary text-primary" size="sm">Area do Aluno</Button>
+            <a href="#programs">
+              <Button size="sm">Quero Treinar!</Button>
+            </a>
+            <Link to="/login">
+              <Button className="bg-secondary text-primary" size="sm">Area do Aluno</Button>
+            </Link>
           </div>
 
           {/* Hamburger */}
@@ -68,8 +73,12 @@ export const Navbar = () => {
               </a>
             ))}
             <div className="flex flex-col gap-3 pt-4 border-t border-foreground/8">
-              <Button size="sm">Quero Treinar!</Button>
-              <Button className="bg-secondary text-primary" size="sm">Area do Aluno</Button>
+              <a href="#programs">
+                <Button size="sm">Quero Treinar!</Button>
+              </a>
+              <Link to="/login">
+                <Button className="bg-secondary text-primary" size="sm">Area do Aluno</Button>
+              </Link>
             </div>
           </div>
         )}
