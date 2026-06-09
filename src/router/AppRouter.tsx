@@ -5,6 +5,7 @@ import { AppLayout } from "../components/ui";
 import { useAuth } from "../hooks/useAuth";
 import { AdminDashboardPage } from "../pages/adminPages";
 import { LoginPage, RegisterPage } from "../pages/authPages";
+import { ProfessorDashboardPage } from "../pages/professorPages";
 import { HomePage } from "../pages/publicPages";
 import { StudentDashboardPage } from "../pages/studentPages";
 import { ForbiddenPage, NotFoundPage } from "../pages/systemPages";
@@ -43,6 +44,14 @@ export function AppRouter() {
           element={
             <RoleGuard roles={["ADMIN"]}>
               <AdminDashboardPage />
+            </RoleGuard>
+          }
+        />
+        <Route
+          path="/professor/dashboard"
+          element={
+            <RoleGuard roles={["PROFESSOR", "ADMIN"]}>
+              <ProfessorDashboardPage />
             </RoleGuard>
           }
         />
