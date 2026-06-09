@@ -21,7 +21,7 @@ function AuthFormShell({
 }: {
   title: string;
   subtitle: string;
-  footer: ReactNode;
+  footer?: ReactNode;
   children: ReactNode;
 }) {
   return (
@@ -63,14 +63,6 @@ export function LoginPage() {
     <AuthFormShell
       title="Entrar na plataforma"
       subtitle="Use suas credenciais para acessar seu painel."
-      footer={
-        <>
-          Ainda não tem conta?{" "}
-          <Link to="/register" className="font-semibold text-primary">
-            Criar conta
-          </Link>
-        </>
-      }
     >
       <form className="space-y-4" onSubmit={handleSubmit}>
         <Input

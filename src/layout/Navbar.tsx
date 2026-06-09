@@ -1,15 +1,17 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../components/Button";
+import { useAuth } from "../hooks/useAuth";
 
 const navLinks = [
-  { href: "#about", label: "CTBJJ Academy" },
-  { href: "#programs", label: "Sobre as Aulas" },
-  { href: "#locations", label: "Localização" },
+  { href: "/#about", label: "CTBJJ Academy" },
+  { href: "/#programs", label: "Sobre as Aulas" },
+  { href: "/#locations", label: "Localização" },
 ];
 
 export const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { isAuthenticated, logout } = useAuth();
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 border-b border-foreground/8">
@@ -32,6 +34,14 @@ export const Navbar = () => {
             ))}
           </div>
 
+          { isAuthenticated ? (
+            <div className="hidden md:flex gap-4">
+            <Link to="/student/dashboard">
+              <Button className="bg-secondary text-primary" size="sm">Area do Aluno</Button>
+            </Link>
+            <Button className="bg-secondary text-primary" size="sm" onClick={logout}>Logout</Button>
+            </div>
+          ) : (
           <div className="hidden md:flex gap-4">
             <a href="#programs">
               <Button size="sm">Quero Treinar!</Button>
@@ -40,6 +50,7 @@ export const Navbar = () => {
               <Button className="bg-secondary text-primary" size="sm">Area do Aluno</Button>
             </Link>
           </div>
+          )}
 
           {/* Hamburger */}
           <button
