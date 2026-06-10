@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { FormEvent, ReactNode } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { useCreateProfessor, useDeleteProfessor, useProfessorsData, useUpdateProfessor } from "../hooks/useProfessorsData";
 import { useCreateStudent, useDeleteStudent, useStudents, useUpdateStudent } from "../hooks/useStudents";
@@ -11,14 +12,23 @@ type Tab = "students" | "professors";
 
 export function AdminDashboardPage() {
   const [tab, setTab] = useState<Tab | null>(null);
+  const navigate = useNavigate();
 
   return (
-    <>
+    <div className="min-h-screen bg-background text-foreground">
       <Navbar />
-      <div className="px-32 py-32">
-        <h1 className="text-2xl font-semibold">Painel Admin</h1>
+      <div className="px-4 sm:px-6 lg:px-12 pt-20 pb-12">
+        <p className="text-[10px] font-bold tracking-[0.35em] uppercase text-secondary mb-2">Gestão</p>
+        <h1 className="text-2xl sm:text-3xl font-black tracking-tight">Painel Admin</h1>
 
-        <div className="mt-8 flex gap-4">
+        <div className="mt-6 flex flex-wrap items-center gap-3">
+          <button
+            onClick={() => navigate("/checkin")}
+            className="rounded-lg bg-primary px-6 py-2.5 font-medium text-primary-foreground hover:opacity-80 transition-opacity"
+          >
+            Abrir Check-in
+          </button>
+          <div className="w-px h-6 bg-foreground/20" />
           <button
             onClick={() => setTab("students")}
             className={`rounded-lg px-6 py-2.5 font-medium transition-colors ${
@@ -46,7 +56,7 @@ export function AdminDashboardPage() {
           {tab === "professors" && <ProfessorList />}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
@@ -170,13 +180,13 @@ function StudentForm({ initial, onSuccess }: { initial: Student | null; onSucces
           value={fields.notes}
           onChange={set("notes")}
           rows={3}
-          className="w-full rounded-2xl border border-foreground/20 bg-transparent px-4 py-3 text-sm outline-none focus:border-primary resize-none"
+          className="w-full rounded-xl border border-foreground/20 bg-background text-foreground px-4 py-3 text-sm outline-none focus:border-primary transition-colors resize-none"
         />
       </Field>
       <button
         type="submit"
         disabled={isPending}
-        className="mt-2 rounded-lg bg-primary py-2.5 text-sm font-medium text-primary-foreground hover:opacity-80 transition-opacity disabled:opacity-50"
+        className="mt-2 rounded-xl bg-primary py-2.5 text-sm font-bold text-primary-foreground hover:opacity-80 transition-opacity disabled:opacity-50"
       >
         {isPending ? "Salvando..." : "Salvar"}
       </button>
@@ -238,9 +248,6 @@ function ProfessorForm({ initial, onSuccess }: { initial: Professor | null; onSu
     belt: (initial?.belt ?? "") as Belt | "",
     stripes: String(initial?.stripes ?? ""),
     bio: initial?.bio ?? "",
-    photoUrl: initial?.photoUrl ?? "",
-    active: initial?.active ?? true,
-    displayOrder: String(initial?.displayOrder ?? ""),
   });
 
   const set = (k: keyof typeof fields) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
@@ -255,9 +262,8 @@ function ProfessorForm({ initial, onSuccess }: { initial: Professor | null; onSu
       belt: (fields.belt || undefined) as Belt | undefined,
       stripes: fields.stripes ? Number(fields.stripes) : undefined,
       bio: fields.bio || undefined,
-      photoUrl: fields.photoUrl || undefined,
-      active: fields.active,
-      displayOrder: fields.displayOrder ? Number(fields.displayOrder) : undefined,
+      active: initial?.active ?? true,
+      displayOrder: initial?.displayOrder ?? 0,
     };
 
     if (initial) {
@@ -292,26 +298,13 @@ function ProfessorForm({ initial, onSuccess }: { initial: Professor | null; onSu
           value={fields.bio}
           onChange={set("bio")}
           rows={3}
-          className="w-full rounded-2xl border border-foreground/20 bg-transparent px-4 py-3 text-sm outline-none focus:border-primary resize-none"
+          className="w-full rounded-xl border border-foreground/20 bg-background text-foreground px-4 py-3 text-sm outline-none focus:border-primary transition-colors resize-none"
         />
-      </Field>
-      <Field label="URL da foto"><Input value={fields.photoUrl} onChange={set("photoUrl")} /></Field>
-      <Field label="Ordem de exibição"><Input type="number" min={0} value={fields.displayOrder} onChange={set("displayOrder")} /></Field>
-      <Field label="Ativo">
-        <label className="flex items-center gap-2 text-sm">
-          <input
-            type="checkbox"
-            checked={fields.active}
-            onChange={(e) => setFields((prev) => ({ ...prev, active: e.target.checked }))}
-            className="h-4 w-4"
-          />
-          Visível no site
-        </label>
       </Field>
       <button
         type="submit"
         disabled={isPending}
-        className="mt-2 rounded-lg bg-primary py-2.5 text-sm font-medium text-primary-foreground hover:opacity-80 transition-opacity disabled:opacity-50"
+        className="mt-2 rounded-xl bg-primary py-2.5 text-sm font-bold text-primary-foreground hover:opacity-80 transition-opacity disabled:opacity-50"
       >
         {isPending ? "Salvando..." : "Salvar"}
       </button>
@@ -324,12 +317,12 @@ function ProfessorForm({ initial, onSuccess }: { initial: Professor | null; onSu
 function Modal({ open, title, onClose, children }: { open: boolean; title: string; onClose: () => void; children: ReactNode }) {
   if (!open) return null;
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
-      <div className="absolute inset-0 bg-black/40" onClick={onClose} />
-      <div className="relative z-10 w-full max-w-lg max-h-[90vh] flex flex-col bg-background rounded-2xl shadow-2xl">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      <div className="absolute inset-0 bg-black/60" onClick={onClose} />
+      <div className="relative z-10 w-full max-w-lg max-h-[90vh] flex flex-col bg-background border border-foreground/10 rounded-2xl shadow-2xl">
         <div className="flex items-center justify-between border-b border-foreground/10 px-6 py-4">
           <h2 className="font-semibold">{title}</h2>
-          <button onClick={onClose} className="text-xl leading-none hover:opacity-60 transition-opacity">×</button>
+          <button onClick={onClose} className="text-xl leading-none text-foreground/40 hover:text-foreground transition-colors">×</button>
         </div>
         <div className="overflow-y-auto px-6 py-6">{children}</div>
       </div>
@@ -340,7 +333,7 @@ function Modal({ open, title, onClose, children }: { open: boolean; title: strin
 function Field({ label, children }: { label: string; children: ReactNode }) {
   return (
     <div className="flex flex-col gap-1.5">
-      <label className="text-xs font-medium text-muted">{label}</label>
+      <label className="text-xs font-semibold uppercase tracking-wider text-muted">{label}</label>
       {children}
     </div>
   );
@@ -350,7 +343,7 @@ function Select({ children, ...props }: React.SelectHTMLAttributes<HTMLSelectEle
   return (
     <select
       {...props}
-      className="w-full rounded-2xl border border-foreground/20 bg-background px-4 py-3 text-sm outline-none focus:border-primary"
+      className="w-full rounded-xl border border-foreground/20 bg-background text-foreground px-4 py-3 text-sm outline-none focus:border-primary transition-colors"
     >
       {children}
     </select>
@@ -370,7 +363,8 @@ function UserTable<T extends { id: string }>({ rows, columns, renderRow, onDelet
     return <p className="text-muted">Nenhum registro encontrado.</p>;
 
   return (
-    <table className="w-full border-collapse text-sm">
+    <div className="overflow-x-auto -mx-1">
+    <table className="w-full border-collapse text-sm min-w-[480px]">
       <thead>
         <tr className="border-b border-foreground/10 text-left text-muted">
           {columns.map((col) => (
@@ -383,7 +377,7 @@ function UserTable<T extends { id: string }>({ rows, columns, renderRow, onDelet
         {rows.map((row) => {
           const cells = renderRow(row);
           return (
-            <tr key={row.id} className="border-b border-foreground/5 hover:bg-foreground/5">
+            <tr key={row.id} className="border-b border-foreground/8 hover:bg-foreground/3 transition-colors">
               {cells.map((cell, i) => (
                 <td key={i} className="py-3 pr-6">{cell}</td>
               ))}
@@ -408,5 +402,6 @@ function UserTable<T extends { id: string }>({ rows, columns, renderRow, onDelet
         })}
       </tbody>
     </table>
+    </div>
   );
 }

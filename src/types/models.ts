@@ -93,10 +93,15 @@ export interface CheckIn {
 }
 
 export interface CheckInStats {
-  totalCheckIns: number;
-  thisMonth: number;
-  thisWeek: number;
-  lastCheckIn?: string | null;
+  totalClasses: number;
+  totalMinutes: number;
+  byClassType: {
+    classTypeId: string | null;
+    classTypeName: string;
+    colorHex: string;
+    totalClasses: number;
+    totalMinutes: number;
+  }[];
 }
 
 export interface RegisterPayload {
@@ -134,9 +139,8 @@ export interface ProfessorPayload {
   belt?: Belt;
   stripes?: number;
   bio?: string;
-  photoUrl?: string;
   active: boolean;
-  displayOrder?: number;
+  displayOrder: number;
 }
 
 export interface SchedulePayload {

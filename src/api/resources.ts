@@ -69,7 +69,7 @@ export const classTypesApi = {
 };
 
 export const checkinsApi = {
-  qrCheckin: async (qrCodeToken: string) => (await api.post<CheckIn>("/api/checkins/qr", { qrCodeToken })).data,
+  qrCheckin: async (qrCodeToken: string) => (await api.post<CheckIn>("/api/checkins/qr", { token: qrCodeToken })).data,
   manualCheckin: async (studentId: string) =>
     (await api.post<CheckIn>("/api/checkins/manual", { studentId })).data,
   checkout: async (id: string) => (await api.post<CheckIn>(`/api/checkins/${id}/checkout`)).data,

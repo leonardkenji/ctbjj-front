@@ -5,7 +5,7 @@ import { AppLayout } from "../components/ui";
 import { useAuth } from "../hooks/useAuth";
 import { AdminDashboardPage } from "../pages/adminPages";
 import { LoginPage, RegisterPage } from "../pages/authPages";
-import { ProfessorDashboardPage } from "../pages/professorPages";
+import { CheckinKioskPage, ProfessorDashboardPage } from "../pages/professorPages";
 import { HomePage } from "../pages/publicPages";
 import { StudentDashboardPage } from "../pages/studentPages";
 import { ForbiddenPage, NotFoundPage } from "../pages/systemPages";
@@ -56,6 +56,17 @@ export function AppRouter() {
           }
         />
       </Route>
+
+      <Route
+        path="/checkin"
+        element={
+          <ProtectedRoute>
+            <RoleGuard roles={["PROFESSOR", "ADMIN"]}>
+              <CheckinKioskPage />
+            </RoleGuard>
+          </ProtectedRoute>
+        }
+      />
 
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
