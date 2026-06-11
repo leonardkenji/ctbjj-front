@@ -1,5 +1,8 @@
 import { Card } from "../components/Card";
 import { useScrollReveal } from "../hooks/useScrollReveal";
+import ctbjjKids from '../assets/ctbjj-kids.png';
+import ctbjjGi from '../assets/ctbjj-gi.png';
+import ctbjjNoGi from '../assets/ctbjj-no-gi.png';
 
 export const Programs = () => {
   const headerRef = useScrollReveal()
@@ -19,7 +22,7 @@ export const Programs = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-5xl mx-auto">
         <div ref={card1Ref} className="reveal">
           <Card
-            image="../src/assets/ctbjj-kids.png"
+            image={ctbjjKids}
             location={["Toyota", "Hamamatsu"]}
             programTitle="Jiu Jitsu Kids"
             programDesc="Desenvolvemos disciplina, respeito e autoconfianca através do Jiu-Jitsu em um ambiente seguro e divertido. Uma atividade completa para o desenvolvimento físico e emocional das crianças."
@@ -28,7 +31,7 @@ export const Programs = () => {
 
         <div ref={card2Ref} className="reveal reveal-delay-200">
           <Card
-            image="../src/assets/ctbjj-gi.png"
+            image={ctbjjGi}
             location={["Toyota", "Hamamatsu"]}
             programTitle="Jiu Jitsu Adulto Kimono"
             programDesc="Treine o autentico Jiu-Jitsu com kimono em um ambiente de alta performance. Aprenda tecnicas refinadas, estrategias de combate e fundamentos solidos. Prepare-se para superar seus limites."
@@ -37,7 +40,7 @@ export const Programs = () => {
 
         <div ref={card3Ref} className="reveal reveal-delay-400">
           <Card
-            image="../src/assets/ctbjj-no-gi.png"
+            image={ctbjjNoGi}
             location={["Hamamatsu"]}
             programTitle="Jiu Jitsu No Gi"
             programDesc="Treine o estilo mais dinamico e intenso do Jiu-Jitsu moderno. Aprimore reflexos, movimentacao e estrategias de controle sem as pegadas do kimono. Evolua seu jogo para alto nivel."

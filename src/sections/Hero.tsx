@@ -1,10 +1,12 @@
+import banner from '../assets/banner.png';
+
 export const Hero = () => {
   return (
     <section id="hero" className="relative min-h-[calc(100vh-64px)] flex items-center bg-background overflow-hidden">
       {/* Background image */}
       <div
         className="absolute inset-0 bg-cover bg-center opacity-15"
-        style={{ backgroundImage: `url('src/assets/banner.png')` }}
+        style={{ backgroundImage: `url(${banner})` }}
       />
 
       {/* Content */}

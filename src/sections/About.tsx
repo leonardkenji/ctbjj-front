@@ -1,5 +1,11 @@
 import { StaffCard } from "../components/StaffCard"
 import { useScrollReveal } from "../hooks/useScrollReveal"
+import toyota from '../assets/toyota.png'
+import lenadroHirae from '../assets/lenadro-hirae.png'
+import yamato from '../assets/yamato.png'
+import matsuo from '../assets/matsuo.png'
+import julia from '../assets/julia.png'
+import kadoguchi from '../assets/kadoguchi.png'
 
 export const About = () => {
   const headerRef = useScrollReveal()
@@ -46,7 +52,7 @@ export const About = () => {
           <StaffCard
             name="Carlos Toyota"
             role="professor"
-            photo="src/assets/toyota.png"
+            photo={toyota}
             belt="preta"
             title="Head Coach"
             bio="Lorem Ipsum"
@@ -54,7 +60,7 @@ export const About = () => {
           <StaffCard
             name="Leandro Hirae"
             role="professor"
-            photo="src/assets/lenadro-hirae.png"
+            photo={lenadroHirae}
             belt="preta"
             title="Coach"
             bio="Lorem Ipsum"
@@ -62,7 +68,7 @@ export const About = () => {
           <StaffCard
             name="Enzo Yamato"
             role="aluno-campeao"
-            photo="src/assets/yamato.png"
+            photo={yamato}
             belt="roxa"
             title="Atleta"
             bio={`GRAND SLAM 2026 🏆\nWORLD CHAMPION 🥇🌎\nRIZIN Koshien Champ 🏆`}
@@ -70,7 +76,7 @@ export const About = () => {
           <StaffCard
             name="Christian Matsuo"
             role="aluno-campeao"
-            photo="src/assets/matsuo.png"
+            photo={matsuo}
             belt="roxa"
             title="Atleta"
             bio={`🇦🇪🥇 1X ABU DHABI WORLD\n🇺🇸🥉 1X IBJJF PAN\n🇯🇵🥇 5X SJJIF WORLD\n🇯🇵🥇 3X IBJJF ASIAN\n🇯🇵🥇 5X ADCC`}
@@ -78,7 +84,7 @@ export const About = () => {
           <StaffCard
             name="Julia Iwamura"
             role="aluno-campeao"
-            photo="src/assets/julia.png"
+            photo={julia}
             belt="amarela"
             title="Atleta"
             bio={`🇦🇪🥇 1X ABU DHABI WORLD\n🥇 1X JAPAN WORLD\n🥈 TOP 2 EUROPEU\n🥈 TOP 2 BRASIL`}
@@ -86,7 +92,7 @@ export const About = () => {
           <StaffCard
             name="Isabela Kadoguchi"
             role="aluno-campeao"
-            photo="src/assets/kadoguchi.png"
+            photo={kadoguchi}
             belt="laranja"
             title="Atleta"
             bio={`🥇 Asian Kids IBJJF\n🥈 Top 2 Mundial Pankids 2024\n🥇🥇 Word Japan`}
