@@ -1,9 +1,10 @@
 import axios from "axios";
 
 const STORAGE_KEY = "ctbjj.auth";
+const API_BASE_URL = import.meta.env.VITE_API_URL?.trim().replace(/\/$/, "") ?? "";
 
 export const api = axios.create({
-  baseURL: "",
+  baseURL: API_BASE_URL,
 });
 
 api.interceptors.request.use((config) => {

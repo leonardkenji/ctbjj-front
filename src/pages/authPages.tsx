@@ -60,8 +60,10 @@ export function LoginPage() {
 
       <form className="space-y-3" onSubmit={handleSubmit}>
         <input className={inputClass} placeholder="E-mail" type="email"
-          value={form.email} onChange={(e) => setForm((c) => ({ ...c, email: e.target.value }))} required />
+          autoCapitalize="none" autoCorrect="off" spellCheck={false}
+          value={form.email} onChange={(e) => setForm((c) => ({ ...c, email: e.target.value.trim() }))} required />
         <input className={inputClass} placeholder="Senha" type="password"
+          autoCapitalize="none" autoCorrect="off"
           value={form.password} onChange={(e) => setForm((c) => ({ ...c, password: e.target.value }))} required />
         <button type="submit" disabled={isSubmitting}
           className="w-full rounded-xl bg-primary px-4 py-3 text-sm font-bold text-primary-foreground hover:opacity-80 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed">
