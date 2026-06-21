@@ -1,73 +1,83 @@
-# React + TypeScript + Vite
+# CTBJJ Front
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend do sistema de gestão da academia **CTBJJ** (Brazilian Jiu-Jitsu). Permite check-in de alunos via QR Code, acompanhamento de frequência, gerenciamento de turmas e horários, além de uma página pública institucional.
 
-Currently, two official plugins are available:
+## Tecnologias
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **React 19** + **TypeScript**
+- **Vite 8**
+- **Tailwind CSS v4**
+- **TanStack Query v5** — gerenciamento de estado do servidor
+- **React Router v7**
+- **Axios** — client HTTP com interceptors de autenticação JWT
+- **html5-qrcode** / **qrcode.react** — leitura e geração de QR Codes
+- **react-hot-toast** — notificações
 
-## React Compiler
+## Pré-requisitos
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Node.js 20+
+- Backend Spring Boot rodando (ver repositório `ctbjj-back`)
 
-## Expanding the ESLint configuration
+## Configuração
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Copie o arquivo de exemplo e ajuste as variáveis:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+cp .env.example .env
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+| Variável | Descrição |
+|---|---|
+| `VITE_API_URL` | URL base do backend (usada em produção/rede local, ex: `http://192.168.1.10:8080`) |
+| `VITE_API_PROXY_TARGET` | Alvo do proxy do Vite em desenvolvimento (padrão: `http://localhost:8080`) |
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+> Em desenvolvimento, as chamadas para `/api/*` são proxiadas automaticamente pelo Vite para `VITE_API_PROXY_TARGET`. Em produção (build), o Nginx deve fazer o proxy.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Instalação e execução
+
+```bash
+npm install
+npm run dev
 ```
+
+O app estará disponível em `http://localhost:5173`.
+
+## Build para produção
+
+```bash
+npm run build
+```
+
+Os arquivos gerados ficam em `dist/` e podem ser servidos por qualquer servidor estático (Nginx, etc.).
+
+## Estrutura de pastas
+
+```
+src/
+├── api/          # Cliente Axios e endpoints (resources.ts)
+├── components/   # Componentes reutilizáveis (Button, Card, etc.)
+├── contexts/     # Contexto de autenticação (AuthContext)
+├── hooks/        # Custom hooks (useAuth, useStudents, useCheckins…)
+├── interface/    # Tipos de props dos componentes
+├── layout/       # Navbar e Footer
+├── pages/        # Agrupamento de páginas por papel (admin, professor, student, public)
+├── router/       # AppRouter com proteção de rotas por papel
+├── sections/     # Seções da página pública (Hero, About, Programs…)
+├── types/        # Modelos de domínio (Student, Professor, Schedule, CheckIn…)
+└── utils/        # Utilitários (cn, format, theme)
+```
+
+## Papéis e rotas protegidas
+
+| Papel | Rotas acessíveis |
+|---|---|
+| Público | `/`, `/login`, `/register` |
+| `STUDENT` | `/student/dashboard` |
+| `PROFESSOR` | `/professor/dashboard`, `/checkin` |
+| `ADMIN` | `/admin/dashboard`, `/admin/students/:id`, `/professor/dashboard`, `/checkin` |
+
+A autenticação usa JWT armazenado no `localStorage` (`ctbjj.auth`). Respostas `401` limpam o token e redirecionam para `/login` automaticamente.
+
+## Check-in via QR Code
+
+A rota `/checkin` é um quiosque para professores/admins. O aluno apresenta o QR Code gerado no seu dashboard e o professor escaneia pela câmera para registrar a presença. O check-in também pode ser feito manualmente pelo painel do professor.
