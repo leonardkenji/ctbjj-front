@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import type { AxiosPromise } from "axios";
 
-const API_URL = "http://localhost:8080/api";
+const API_URL = "/api";
 
 const fetchData = async (id:string): AxiosPromise<User> => {
   return axios.get(`${API_URL}/users/${id}`)

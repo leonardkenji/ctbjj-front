@@ -29,11 +29,41 @@ export function useCurrentStudent() {
   });
 }
 
+export function useStudent(studentId?: string) {
+  return useQuery({
+    queryKey: ["students", studentId],
+    queryFn: () => studentsApi.show(studentId!),
+    enabled: Boolean(studentId),
+  });
+}
+
 export function useStudentStats(studentId?: string) {
   return useQuery({
     queryKey: ["checkins", "stats", studentId],
     queryFn: () => checkinsApi.stats(studentId!),
     enabled: Boolean(studentId),
+  });
+}
+
+export function useStudentsStats(studentIds: string[]) {
+  return useQueries({
+    queries: studentIds.map((studentId) => ({
+      queryKey: ["checkins", "stats", studentId],
+      queryFn: () => checkinsApi.stats(studentId),
+      enabled: Boolean(studentId),
+    })),
+    combine(results) {
+      return {
+        data: results.reduce<Record<string, number>>((acc, query, index) => {
+          const studentId = studentIds[index];
+          if (studentId) {
+            acc[studentId] = query.data?.totalClasses ?? 0;
+          }
+          return acc;
+        }, {}),
+        isLoading: results.some((query) => query.isLoading),
+      };
+    },
   });
 }
 

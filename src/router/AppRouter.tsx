@@ -3,7 +3,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 
 import { AppLayout } from "../components/ui";
 import { useAuth } from "../hooks/useAuth";
-import { AdminDashboardPage } from "../pages/adminPages";
+import { AdminDashboardPage, AdminStudentViewPage } from "../pages/adminPages";
 import { LoginPage, RegisterPage } from "../pages/authPages";
 import { CheckinKioskPage, ProfessorDashboardPage } from "../pages/professorPages";
 import { HomePage } from "../pages/publicPages";
@@ -44,6 +44,14 @@ export function AppRouter() {
           element={
             <RoleGuard roles={["ADMIN"]}>
               <AdminDashboardPage />
+            </RoleGuard>
+          }
+        />
+        <Route
+          path="/admin/students/:studentId"
+          element={
+            <RoleGuard roles={["ADMIN"]}>
+              <AdminStudentViewPage />
             </RoleGuard>
           }
         />

@@ -116,7 +116,7 @@ export function StudentDashboardPage() {
               <div className="bg-white p-2 rounded-xl border border-foreground/10">
                 <QRCodeSVG value={data.qrCodeToken} size={164} />
               </div>
-              <p className="text-[11px] text-muted text-center leading-relaxed max-w-[200px]">
+              <p className="text-[11px] text-muted text-center leading-relaxed max-w-50">
                 Apresente ao professor para registrar sua presença
               </p>
             </div>

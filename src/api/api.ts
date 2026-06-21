@@ -3,7 +3,7 @@ import axios from "axios";
 const STORAGE_KEY = "ctbjj.auth";
 
 export const api = axios.create({
-  baseURL: "http://localhost:8080",
+  baseURL: "",
 });
 
 api.interceptors.request.use((config) => {
