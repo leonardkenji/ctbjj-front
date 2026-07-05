@@ -30,7 +30,7 @@ export const Hero = () => {
 
             <div className="flex flex-wrap justify-center gap-4 animate-fade-in animation-delay-300">
               <a
-                href="#programs"
+                href="https://wa.link/882jcb"
                 className="inline-flex items-center bg-secondary text-muted-foreground text-base md:text-2xl font-black tracking-[0.2em] uppercase px-6 md:px-8 py-3 md:py-4 hover:bg-secondary/80 transition-colors rounded-sm"
               >
                 QUERO TREINAR!

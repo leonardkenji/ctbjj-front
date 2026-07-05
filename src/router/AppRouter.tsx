@@ -5,6 +5,7 @@ import { AppLayout } from "../components/ui";
 import { useAuth } from "../hooks/useAuth";
 import { AdminDashboardPage, AdminStudentViewPage } from "../pages/adminPages";
 import { LoginPage, RegisterPage } from "../pages/authPages";
+import { LegalPage } from "../pages/legalPages";
 import { CheckinKioskPage, ProfessorDashboardPage } from "../pages/professorPages";
 import { HomePage } from "../pages/publicPages";
 import { StudentDashboardPage } from "../pages/studentPages";
@@ -26,6 +27,7 @@ export function AppRouter() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
+      <Route path="/legal" element={<LegalPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/403" element={<ForbiddenPage />} />

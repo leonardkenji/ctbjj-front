@@ -3,12 +3,14 @@ import { useScrollReveal } from "../hooks/useScrollReveal";
 import ctbjjKids from '../assets/ctbjj-kids.png';
 import ctbjjGi from '../assets/ctbjj-gi.png';
 import ctbjjNoGi from '../assets/ctbjj-no-gi.png';
+import mma from '../assets/mma.jpg';
 
 export const Programs = () => {
   const headerRef = useScrollReveal()
   const card1Ref = useScrollReveal()
   const card2Ref = useScrollReveal()
   const card3Ref = useScrollReveal()
+  const card4Ref = useScrollReveal()
 
   return (
     <section id="programs" className="px-6 md:px-8 py-16 border-t border-foreground/8">
@@ -19,7 +21,7 @@ export const Programs = () => {
         <h2 className="font-black text-4xl md:text-5xl">PROGRAMAS</h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-5xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-5 max-w-5xl mx-auto">
         <div ref={card1Ref} className="reveal">
           <Card
             image={ctbjjKids}
@@ -44,6 +46,15 @@ export const Programs = () => {
             location={["Hamamatsu"]}
             programTitle="Jiu Jitsu No Gi"
             programDesc="Treine o estilo mais dinamico e intenso do Jiu-Jitsu moderno. Aprimore reflexos, movimentacao e estrategias de controle sem as pegadas do kimono. Evolua seu jogo para alto nivel."
+          />
+        </div>
+
+        <div ref={card4Ref} className="reveal reveal-delay-400">
+          <Card
+            image={mma}
+            location={["Hamamatsu"]}
+            programTitle="Mixed Martial Arts - MMA"
+            programDesc="Treine a modalidade mais completa e intensa dos esportes de combate. Desenvolva trocação, quedas, defesa pessoal, condicionamento físico e estratégia em um treino dinâmico que desafia corpo e mente."
           />
         </div>
       </div>

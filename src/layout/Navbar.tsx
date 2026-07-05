@@ -59,7 +59,7 @@ export const Navbar = ({ dark = false }: { dark?: boolean }) => {
                 <a href="#programs">
                   <Button size="sm">Quero Treinar!</Button>
                 </a>
-                <Link to="/login">
+                <Link to="https://wa.link/882jcb">
                   <Button className="bg-secondary text-primary" size="sm">Área do Aluno</Button>
                 </Link>
               </>
@@ -104,7 +104,7 @@ export const Navbar = ({ dark = false }: { dark?: boolean }) => {
                   <a href="#programs" onClick={() => setMenuOpen(false)}>
                     <Button className="w-full" size="sm">Quero Treinar!</Button>
                   </a>
-                  <Link to="/login" onClick={() => setMenuOpen(false)}>
+                  <Link to="https://wa.link/882jcb" onClick={() => setMenuOpen(false)}>
                     <Button className="w-full bg-secondary text-primary" size="sm">Área do Aluno</Button>
                   </Link>
                 </>

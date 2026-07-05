@@ -7,11 +7,30 @@ import matsuo from '../assets/matsuo.png'
 import julia from '../assets/julia.png'
 import kadoguchi from '../assets/kadoguchi.png'
 
+const aboutStats = [
+  {
+    value: "04",
+    label: "Unidades",
+    description: "Presenca em cidades estrategicas para levar nossa filosofia a mais alunos no Japao.",
+  },
+  {
+    value: "18",
+    label: "Professores",
+    description: "Uma equipe comprometida com ensino tecnico, disciplina e evolucao constante dentro do tatame.",
+  },
+  {
+    value: "420+",
+    label: "Alunos",
+    description: "Uma comunidade em crescimento formada por criancas, atletas e praticantes de todos os niveis.",
+  },
+]
+
 export const About = () => {
   const headerRef = useScrollReveal()
   const text1Ref = useScrollReveal()
   const text2Ref = useScrollReveal()
   const text3Ref = useScrollReveal()
+  const statsRef = useScrollReveal()
   const teamTitleRef = useScrollReveal()
   const teamGridRef = useScrollReveal()
 
@@ -42,6 +61,25 @@ export const About = () => {
           É através do processo de pequenas evoluções diárias que você se torna um artista
           marcial dentro e fora dos tatames.
         </p>
+      </div>
+
+      <div ref={statsRef} className="reveal grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+        {aboutStats.map((stat, index) => (
+          <article
+            key={stat.label}
+            className={`border-t border-foreground/10 pt-6 text-center ${index > 0 ? "reveal-delay-100" : ""}`}
+          >
+            <p className="text-secondary text-6xl md:text-7xl font-black tracking-tight leading-none">
+              {stat.value}
+            </p>
+            <h3 className="text-primary text-2xl font-black uppercase tracking-[0.15em] mt-5 mb-4">
+              {stat.label}
+            </h3>
+            <p className="text-foreground/65 text-base leading-relaxed font-medium max-w-xs mx-auto">
+              {stat.description}
+            </p>
+          </article>
+        ))}
       </div>
 
       <div>
