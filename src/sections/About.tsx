@@ -9,17 +9,17 @@ import kadoguchi from '../assets/kadoguchi.png'
 
 const aboutStats = [
   {
-    value: "04",
+    value: "10",
     label: "Unidades",
-    description: "Presenca em cidades estrategicas para levar nossa filosofia a mais alunos no Japao.",
+    description: "Presenca em cidades estrategicas para levar nossa filosofia a mais alunos no Japao e no mundo.",
   },
   {
-    value: "18",
+    value: "20+",
     label: "Professores",
     description: "Uma equipe comprometida com ensino tecnico, disciplina e evolucao constante dentro do tatame.",
   },
   {
-    value: "420+",
+    value: "500+",
     label: "Alunos",
     description: "Uma comunidade em crescimento formada por criancas, atletas e praticantes de todos os niveis.",
   },

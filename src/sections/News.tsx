@@ -1,31 +1,25 @@
 import { useScrollReveal } from "../hooks/useScrollReveal";
 
 const featuredNews = {
-  tag: "Destaque",
-  title: "Equipe conquista resultados expressivos em campeonato regional",
+  tag: "Campeonato",
+  title: "🥋 Shikoku Open Jiu-Jitsu Championship 2026",
   excerpt:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Curabitur euismod, libero quis facilisis hendrerit, augue libero ultrices augue, sed hendrerit odio velit non neque.",
+    `No dia 2 de agosto, o tatame do Soyjoy Budokan, em Naruto, Tokushima, receberá atletas de diversas categorias para mais uma grande competição oficial da ASJJF. O Shikoku Open é um evento certificado com duas estrelas, e seus resultados contam pontos para o ranking de atletas da federação. Uma grande oportunidade para competir, testar suas habilidades e representar sua academia!
+
+    🏆🔥 📅 Data: 2 de agosto de 2026
+    📍 Local: Soyjoy Budokan — Naruto, Tokushima
+    ⏰ Inscrições até: 23 de julho, às 23h59
+
+    Não fique de fora. Prepare o quimono, entre no tatame e venha viver essa experiência!`,
   meta: "Atualizado recentemente",
 };
 
 const newsItems = [
   {
-    tag: "Campeonatos",
-    title: "Atletas confirmados para a proxima competicao nacional",
+    tag: "Atleta CTBJJ",
+    title: "🥇 Isabela Kadoguchi é campeã da Dreamgirls Cup!",
     excerpt:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse potenti. Aenean luctus elit sed orci feugiat, sit amet interdum sapien maximus.",
-  },
-  {
-    tag: "Empresa",
-    title: "Nova iniciativa fortalece a comunidade dentro e fora do tatame",
-    excerpt:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at arcu nec mauris condimentum bibendum sit amet ac sem.",
-  },
-  {
-    tag: "Highlights",
-    title: "Semana de treinos especiais com foco em tecnica e performance",
-    excerpt:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fermentum, sem non tempus dictum, justo purus pretium tortor, at posuere arcu lectus vel nibh.",
+      "Representando a Carlos Toyota BJJ, Isabela brilhou no ART.7 e conquistou o título do torneio feminino Sub-21. Com técnica, determinação e muita personalidade dentro do tatame, ela superou grandes adversárias e mostrou por que é um dos jovens talentos mais promissores do jiu-jítsu. Uma conquista que representa o resultado de muito treino, dedicação e coragem. Parabéns, campeã! 👏🔥.",
   },
 ];
 
@@ -63,7 +57,7 @@ export const News = () => {
             <h3 className="text-3xl md:text-5xl font-black leading-tight max-w-3xl">
               {featuredNews.title}
             </h3>
-            <p className="mt-5 max-w-2xl text-sm md:text-base leading-relaxed text-primary-foreground/70">
+            <p className="mt-5 max-w-2xl whitespace-pre-line text-sm md:text-base leading-relaxed text-primary-foreground/70">
               {featuredNews.excerpt}
             </p>
           </article>

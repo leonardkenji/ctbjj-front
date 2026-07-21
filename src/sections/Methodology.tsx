@@ -132,7 +132,7 @@ export const Methodology = () => {
               Ensinamos uma maneira de pensar, de lutar e de viver.
             </p>
             <p className="text-base md:text-lg leading-relaxed text-primary-foreground/80">
-              CTBJJ – Forjados na Pressão.
+              CTBJJ - Forjados na Pressão.
             </p>
           </div>
 
@@ -231,7 +231,7 @@ export const Methodology = () => {
 
         <div
           ref={ctaRef}
-          className="reveal reveal-delay-200 mt-16 rounded-sm border border-white/10 bg-gradient-to-r from-white/8 via-white/4 to-transparent p-8 md:p-10"
+          className="reveal reveal-delay-200 mt-16 rounded-sm border border-white/10 bg-linear-to-r from-white/8 via-white/4 to-transparent p-8 md:p-10"
         >
           <p className="text-primary-foreground/40 text-xs font-black tracking-[0.3em] uppercase mb-3">
             Filosofia CTBJJ

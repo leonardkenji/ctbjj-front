@@ -2,6 +2,9 @@ import { LocationCard } from "../components/LocationCard"
 import { useScrollReveal } from "../hooks/useScrollReveal"
 import unidadeHamamatsu from '../assets/unidade-hamamatsu.png'
 import unidadeToyota from '../assets/unidade-toyota.png'
+import bapctbjj from '../assets/bapctbjj.png'
+import effortmma from '../assets/effortmma.jpg'
+import ctbjjlava from '../assets/ctbjjlava.png'
 import logo from '../assets/CTBJJ.png'
 
 export const Locations = () => {
@@ -13,6 +16,7 @@ export const Locations = () => {
   const card5Ref = useScrollReveal()
   const card6Ref = useScrollReveal()
   const card7Ref = useScrollReveal()
+  const card8Ref = useScrollReveal()
 
   return (
     <section id="locations" className="px-6 md:px-8 py-16 border-t border-foreground/8">
@@ -48,18 +52,18 @@ export const Locations = () => {
           </div>
           <div ref={card3Ref} className="reveal reveal-delay-200">
             <LocationCard
-              image={logo}
-              locationName="Hekinan"
-              address="xxxxxxxxxxxxxx"
-              url=""
+              image={effortmma}
+              locationName="Hekinan - Effort MMA"
+              address="5 Chome-111 Nawatemachi, Hekinan, Aichi 447-0021"
+              url="https://maps.app.goo.gl/pk1d5ddZE8gQK88B9"
             />
           </div>
           <div ref={card4Ref} className="reveal reveal-delay-200">
             <LocationCard
               image={logo}
               locationName="Ibaraki"
-              address="xxxxxxxxxxxxxxx"
-              url=""
+              address="aguarde ..."
+              url="https://www.instagram.com/ctbjj_ibaraki/"
             />
           </div>
         </div>
@@ -73,28 +77,40 @@ export const Locations = () => {
 
           <div ref={card5Ref} className="reveal">
             <LocationCard
-              image={logo}
+              image={ctbjjlava}
               locationName="Coreia do Sul"
-              address=""
-              url=""
+              address="57-15 Munsan-ri, Munsan-eup, Paju-si, Gyeonggi-do, South Korea"
+              url="https://maps.app.goo.gl/ZVKFJBiXUs58Pub96"
             />
           </div>
+
           <div ref={card6Ref} className="reveal">
             <LocationCard
               image={logo}
-              locationName="Taiwan"
-              address=""
+              locationName="China - Barreira Team"
+              address="Wanda Square 12 .151 , Pengjiang , Jiangmen, Guangdong"
               url=""
             />
           </div>
+
           <div ref={card7Ref} className="reveal">
             <LocationCard
               image={logo}
-              locationName="Holanda"
-              address=""
-              url=""
+              locationName="Taiwan - Taipei"
+              address="No. 24, Ln. 60, Sec. 2, Xinsheng N. Rd., Zhongshan Dist., Taipei City 104012, Taiwan (R.O.C.), Taipei, Taiwan 104"
+              url="https://www.instagram.com/ctbjjtw/?hl=enhttps://www.instagram.com/ctlava_bjj/"
             />
           </div>
+
+          <div ref={card8Ref} className="reveal">
+            <LocationCard
+              image={bapctbjj}
+              locationName="Holanda - BJJ & MMA"
+              address="Ermelo, Wageningen, Veenendaal"
+              url="https://www.instagram.com/bapctbjj/?hl=en"
+            />
+          </div>
+
         </div>
         </div>
     </section>

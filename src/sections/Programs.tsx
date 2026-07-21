@@ -27,7 +27,7 @@ export const Programs = () => {
             image={ctbjjKids}
             location={["Toyota", "Hamamatsu"]}
             programTitle="Jiu Jitsu Kids"
-            programDesc="Desenvolvemos disciplina, respeito e autoconfianca através do Jiu-Jitsu em um ambiente seguro e divertido. Uma atividade completa para o desenvolvimento físico e emocional das crianças."
+            programDesc="Desenvolvemos disciplina, respeito e autoconfiança através do Jiu-Jitsu em um ambiente seguro e divertido. Uma atividade completa para o desenvolvimento físico e emocional das crianças."
           />
         </div>
 
@@ -36,7 +36,7 @@ export const Programs = () => {
             image={ctbjjGi}
             location={["Toyota", "Hamamatsu"]}
             programTitle="Jiu Jitsu Adulto Kimono"
-            programDesc="Treine o autentico Jiu-Jitsu com kimono em um ambiente de alta performance. Aprenda tecnicas refinadas, estrategias de combate e fundamentos solidos. Prepare-se para superar seus limites."
+            programDesc="Treine o autêntico Jiu-Jitsu com kimono em um ambiente de alta performance. Aprenda técnicas refinadas, estratégias de combate e fundamentos sólidos. Prepare-se para superar seus limites."
           />
         </div>
 
@@ -45,7 +45,7 @@ export const Programs = () => {
             image={ctbjjNoGi}
             location={["Hamamatsu"]}
             programTitle="Jiu Jitsu No Gi"
-            programDesc="Treine o estilo mais dinamico e intenso do Jiu-Jitsu moderno. Aprimore reflexos, movimentacao e estrategias de controle sem as pegadas do kimono. Evolua seu jogo para alto nivel."
+            programDesc="Treine o estilo mais dinâmico e intenso do Jiu-Jitsu moderno. Aprimore reflexos, movimentação e estratégias de controle sem as pegadas do kimono. Evolua seu jogo para alto nível."
           />
         </div>
 
